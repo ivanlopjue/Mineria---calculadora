@@ -38,12 +38,13 @@ def escribir_lento(texto, index=0):
 # =========================
 # MOSTRAR RESULTADO FORMATEADO
 # =========================
-def mostrar_resultado(item, unidades, vehiculo, material):
+def mostrar_resultado(item, unidades, vehiculo, material, ubicacion):
     salida = (
         "-" * 51 + "\n"
         f"Material: {item:<20} Unidades: {unidades}\n\n"
-        f"Tipo de minado: {vehiculo}\n"
-        f"Posibles materiales: {material}\n"
+        f"Tipo de minado: {vehiculo}\n\n"
+        f"Posibles materiales: {material}\n\n"
+        f"Posibles ubicaciones: {ubicacion}\n"
         + "-" * 51 + "\n\n"
     )
 
@@ -87,10 +88,11 @@ def procesar_numero(event=None):  # event para ENTER
         item = fila["item"]
         vehiculo = fila["vehiculo"]
         material = fila["material"]
+        ubicacion = fila["ubicacion"]
 
         if numero % codigo == 0:
             unidades = numero // codigo
-            mostrar_resultado(item, unidades, vehiculo, material)
+            mostrar_resultado(item, unidades, vehiculo, material, ubicacion)
             encontrado = True
 
     if not encontrado:
