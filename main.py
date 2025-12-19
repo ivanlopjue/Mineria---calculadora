@@ -38,13 +38,15 @@ def escribir_lento(texto, index=0):
 # =========================
 # MOSTRAR RESULTADO FORMATEADO
 # =========================
-def mostrar_resultado(item, unidades, vehiculo):
+def mostrar_resultado(item, unidades, vehiculo, material):
     salida = (
         "-" * 51 + "\n"
         f"Material: {item:<20} Unidades: {unidades}\n\n"
         f"Tipo de minado: {vehiculo}\n"
+        f"Posibles materiales: {material}\n"
         + "-" * 51 + "\n\n"
     )
+
     cola_resultados.append(salida)
     # Si no hay animación en curso, iniciar escritura
     if len(cola_resultados) == 1:
@@ -84,10 +86,11 @@ def procesar_numero(event=None):  # event para ENTER
         codigo = fila["codigo"]
         item = fila["item"]
         vehiculo = fila["vehiculo"]
+        material = fila["material"]
 
         if numero % codigo == 0:
             unidades = numero // codigo
-            mostrar_resultado(item, unidades, vehiculo)
+            mostrar_resultado(item, unidades, vehiculo, material)
             encontrado = True
 
     if not encontrado:
